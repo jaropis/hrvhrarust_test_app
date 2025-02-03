@@ -1,4 +1,3 @@
-// in their main.rs or lib.rs
 use hrvhra_rust::{data_reader::RRSeries, runs::RRRuns};
 
 fn main() {
