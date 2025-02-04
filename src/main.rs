@@ -13,11 +13,12 @@ fn main() {
     // Method 2: Reading from file
     match RRSeries::read_rr("test_longer.csv") {
         Ok(rr_series) => {
-            let mut rr = RRRuns::new(rr_series.rr, rr_series.annot, true);
+            let mut rr = RRRuns::new(rr_series.rr.clone(), rr_series.annot, true);
             rr.get_full_runs();
             let summary = rr.get_runs_summary();
             println!("File analysis results: {:?}", summary);
-            let sampen = samp_en::calc_samp_en(rr_series.rr, 0.2);
+            let signal = rr_series.rr.clone();
+            let sampen = samp_en::calc_samp_en(&signal, 0.2);
             println!("SampEn: {}", sampen);
         }
         Err(e) => println!("Error reading file: {}", e),
