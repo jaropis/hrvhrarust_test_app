@@ -1,3 +1,4 @@
+use hrvhra_rust::samp_en;
 use hrvhra_rust::{data_reader::RRSeries, runs::RRRuns};
 
 fn main() {
@@ -10,12 +11,14 @@ fn main() {
     println!("Analysis results: {:?}", summary);
 
     // Method 2: Reading from file
-    match RRSeries::read_rr("test1.csv") {
+    match RRSeries::read_rr("test_longer.csv") {
         Ok(rr_series) => {
             let mut rr = RRRuns::new(rr_series.rr, rr_series.annot, true);
             rr.get_full_runs();
             let summary = rr.get_runs_summary();
             println!("File analysis results: {:?}", summary);
+            let sampen = samp_en::calc_samp_en(rr_series.rr, 0.2);
+            println!("SampEn: {}", sampen);
         }
         Err(e) => println!("Error reading file: {}", e),
     }
