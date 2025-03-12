@@ -18,7 +18,7 @@ fn main() {
             let summary = rr.get_runs_summary();
             println!("File analysis results: {:?}", summary);
             let signal = rr_series.rr.clone();
-            let sampen = samp_en::calc_samp_en(&signal, 0.2);
+            let sampen = samp_en::calc_samp_en(&signal, 0.15);
             println!("SampEn: {}", sampen);
         }
         Err(e) => println!("Error reading file: {}", e),
