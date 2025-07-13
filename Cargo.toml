@@ -4,4 +4,4 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-hrvhra_rust = { path = "../runs_rust" }
+hrvhra_rust = { path = "../hrvhrarust" }

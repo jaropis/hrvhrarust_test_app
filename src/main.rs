@@ -14,7 +14,7 @@ fn main() {
     rr.print_runs_variances();
 
     // Method 2: Reading from file
-    match RRSeries::read_rr("test_longer.csv") {
+    match RRSeries::read_rr("ANDRZ29_P.csv") {
         Ok(rr_series) => {
             let mut rr = RRRuns::new(rr_series.rr.clone(), rr_series.annot, true);
             rr.get_full_runs();
