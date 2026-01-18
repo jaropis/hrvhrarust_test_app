@@ -12,9 +12,10 @@ fn main() {
     rr.print_runs_addresses();
     rr.calculate_runs_variances();
     rr.print_runs_variances();
+    println!("printing runs accumulator()");
 
     // Method 2: Reading from file
-    match RRSeries::read_rr("ANDRZ29_P.csv") {
+    match RRSeries::read_rr("test_longer.csv") {
         Ok(rr_series) => {
             let mut rr = RRRuns::new(rr_series.rr.clone(), rr_series.annot, true);
             rr.get_full_runs();
@@ -25,6 +26,7 @@ fn main() {
             println!("SampEn: {}", sampen);
             // rr.print_runs_addresses();
             rr.calculate_runs_variances();
+            rr.print_runs_accumulator();
             rr.print_runs_variances();
         }
         Err(e) => println!("Error reading file: {}", e),
